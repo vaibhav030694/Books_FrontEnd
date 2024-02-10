@@ -1,0 +1,36 @@
+.book-card{
+  margin: 10px;
+  box-shadow: slategray;
+}
+
+
+.select-status{
+max-height: 50px;
+width: 154px;
+}
+
+.mat-mdc-option {
+  min-height: 27px !important;
+/* max-height: min-content !important; */
+}
+
+.mat-mdc-form-field-flex {
+   padding-top: 0px !important;
+  padding-bottom: 0px !important;
+  .mat-mdc-form-field-infix{
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+    flex: auto;
+    min-width: 0;
+    width: 180px;
+    position: relative;
+    box-sizing: border-box;
+    margin-top: -10px !important;
+  }
+ }
+
+
+.label-status {
+  /* padding-top: 0px !important;
+  padding-bottom: 1px !important; */
+}

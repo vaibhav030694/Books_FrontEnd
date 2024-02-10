@@ -1,0 +1,26 @@
+<div>
+
+  <div class="filter-card">
+    <form>
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Search book title"
+        type = 'text' [(ngModel)]=
+        "searchTermInput"
+        name="searchTerm"
+        class="search-box"
+        (keyup)="filterBookList()">
+      </mat-form-field>
+    </form>
+
+  </div>
+
+
+  <ul>
+    <div *ngFor="let book of books">
+      <app-book-details  [book]="book"
+                         [component]="'book-list'">
+
+      </app-book-details>
+    </div>
+  </ul>
+</div>

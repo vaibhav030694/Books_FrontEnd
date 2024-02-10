@@ -1,0 +1,29 @@
+<mat-card class="book-card">
+  <mat-card-header>
+    <mat-card-title>Title: {{ book.name }}</mat-card-title>
+    <mat-card-subtitle>Author: {{ book.author }}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <p matLine>ISBN: {{ book.ISBN }}</p>
+  </mat-card-content>
+  <ng-container *ngIf="component == 'book-list'">
+  <mat-card-actions align="end">
+    <button mat-button (click)="addToReadingList(book)" color="primary" [disabled]="book.isadded=='1'">Add to reading list</button>
+  </mat-card-actions>
+  </ng-container>
+  <ng-container *ngIf="component == 'reading-list'">
+    <mat-card-actions align="end">
+      <button mat-button color="warn" (click)="delete(book.ISBN)">Delete</button>
+      <mat-form-field class="select-status">
+        <!-- <mat-label>Status</mat-label> -->
+        <mat-select [(value)]="book.status" (selectionChange)="updateStatus(book.ISBN, $event.value)">
+          <mat-option value="unread" >Unread</mat-option>
+          <mat-option value="inProgress"  >In Progress</mat-option>
+          <mat-option value="finished" >Finished</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+    </mat-card-actions>
+    </ng-container>
+</mat-card>
+

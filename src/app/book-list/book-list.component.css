@@ -10,8 +10,11 @@
 
 }
 
+.mat-mdc-form-field{
+  width: 300px;
+}
 
-.search-box{
+.search-form{
   display: block;
   min-height: 50px;
 }

@@ -7,9 +7,19 @@ import { Subject } from 'rxjs/internal/Subject';
 })
 export class BookService {
   private apiUrl = 'http://localhost:3000/api/books';
-  // filterSubject :Subject<string> = new Subject();
+  tabChangeSubject :Subject<any> = new Subject();
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+
+
+   }
+
+   subsSub(){
+//     this.tabChangeSubject.subscribe(tabValue =>{
+//       console.log(tabValue);
+//  })
+
+   }
 
   getBooks() {
     return this.http.get<any[]>(this.apiUrl+'/getAllBooks');

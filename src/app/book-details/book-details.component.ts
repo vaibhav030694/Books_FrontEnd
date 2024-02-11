@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import {MatIconModule} from '@angular/material/icon';
 import {MatCardModule} from '@angular/material/card';
 import { Book } from '../../models/book';
@@ -7,6 +7,7 @@ import { BookService } from '../../service/book.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {MatSelectModule} from '@angular/material/select';
 import {MatButtonModule} from '@angular/material/button';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-book-details',
@@ -26,6 +27,8 @@ message: any;
   @Input() component: string = '';
   // @Input() filterStatus!: string;
   status: string = 'unread';
+  @Output() refreshReadingList: EventEmitter<any> = new EventEmitter();
+  @Output() refreshBookList: EventEmitter<any> = new EventEmitter();
 
 
   constructor(private bookService: BookService,
@@ -43,12 +46,14 @@ message: any;
 
              // book status updated
              this.openSnackBar('status updated')
+             this.refreshReadingList.emit()
            },
            error: (e) =>{
            console.error('Error adding book to reading list books', e)
          }
        });
     }
+
     delete(isbn: any) {
             this.bookService.deleteBook(isbn)
             .subscribe({
@@ -56,7 +61,7 @@ message: any;
 
                 // book is removed to reading list
                 this.openSnackBar('book is removed to reading list')
-
+                this.refreshReadingList.emit()
                 // update reading list
                 //api call
               },
@@ -73,6 +78,9 @@ message: any;
         next: (response: any)=>{
           // book is addded to reading list
           this.openSnackBar('book is addded to reading list')
+          // this.bookService.tabChangeSubject.next()
+          // this.refreshReadingList.emit();
+          this.refreshBookList.emit();
         },
         error: (e) =>{
         console.error('Error adding book to reading list books', e)
@@ -83,15 +91,9 @@ message: any;
 
 
     openSnackBar(message: string) {
-        // this._snackBar.open(message);
         this._snackBar.open(message, '', {
           duration: 1500
         });
       }
 
-      // filterBookList(status: string){
-      //   console.log('filter reading list')
-      //   //implement ui filter
-
-      // }
 }

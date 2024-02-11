@@ -19,18 +19,28 @@ import {MatCardModule} from '@angular/material/card';
 })
 export class ReadingListComponent {
 
+
   readingListbooks: Book[] = []
   readingListbooksCopy: Book[] = []
   filterStatus: any;
   @ViewChild('BookDetailsComponent',{static: false})
   bookDetailsComponent: BookDetailsComponent | undefined;
+  selectedFilter: any = 'all';
 
 
 
   constructor(private bookService: BookService) { }
 
   ngOnInit() {
+    console.log('reading list init')
     this.getReadingList();
+    this.bookService.tabChangeSubject.subscribe(tabValue =>{
+      if(tabValue == 'refreshReadingList'){
+        console.log('refreshhhhhhhhoiiiiinnnnngggg refreshReadingList')
+        this.getReadingList();
+      }
+
+ })
    }
 
    getReadingList(): void {
@@ -39,6 +49,7 @@ export class ReadingListComponent {
        next: (response: any)=>{
          this.readingListbooks = response
           this.readingListbooksCopy = JSON.parse(JSON.stringify(this.readingListbooks))
+          this.filterReadingList(this.selectedFilter)
               },
               error: (e) =>{
               console.error('Error fetching books', e)
@@ -47,7 +58,8 @@ export class ReadingListComponent {
     }
 
 
-   onChange(status: any){
+    filterReadingList(status: any){
+    this.selectedFilter = status
     this.readingListbooks = this.readingListbooksCopy
 
     if(status != 'all'){
@@ -65,4 +77,11 @@ export class ReadingListComponent {
 
 
    }
+
+   refreshReadingList(e: any) {
+    console.log('refreshReadingList')
+     this.getReadingList();
+
+     this.bookService.tabChangeSubject.next('refreshBookList')
+    }
 }

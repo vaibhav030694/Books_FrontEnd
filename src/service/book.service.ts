@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Subject } from 'rxjs/internal/Subject';
 
 @Injectable({
@@ -12,33 +12,39 @@ export class BookService {
   constructor(private http: HttpClient) {}
 
   getBooks() {
-    return this.http.get<any[]>(this.apiUrl+'/getAllBooks');
+    console.log(localStorage);
+    const token =  localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization',  `Bearer ${token}`);
+    return this.http.get<any[]>(this.apiUrl+'/getAllBooks', {headers});
   }
 
   getReadingListBooks() {
-    // to do create api to fetch reding list books
-    return this.http.get<any[]>(this.apiUrl+'/readingListbooks');
+    const token =  localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization',  `Bearer ${token}`);
+    return this.http.get<any[]>(this.apiUrl+'/readingListbooks', {headers});
   }
 
   addBook(bookISBN: any) {
-    return this.http.post<any>(this.apiUrl+'/addBookToUserlist', {ISBN:bookISBN});
+    const token =  localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization',  `Bearer ${token}`);
+    return this.http.post<any>(this.apiUrl+'/addBookToUserlist', {ISBN:bookISBN}, {headers});
   }
 
   updateBookStatus(isbn: string, status: string) {
-    return this.http.patch<any>(`${this.apiUrl}`+'/updateStatus'+`/${isbn}`, { status });
+    const token =  localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization',  `Bearer ${token}`);
+    return this.http.patch<any>(`${this.apiUrl}`+'/updateStatus'+`/${isbn}`, { status }, {headers});
   }
 
   deleteBook(isbn: string) {
-    return this.http.delete<any>(`${this.apiUrl}`+'/removeBookFormUserList'+`/${isbn}`);
+    const token =  localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization',  `Bearer ${token}`);
+    return this.http.delete<any>(`${this.apiUrl}`+'/removeBookFormUserList'+`/${isbn}`, {headers});
   }
 
   getReadingBookListStats() {
-    // to do create api to fetch reding list books
-    return this.http.get<any[]>(this.apiUrl+'/booksStatusData');
+    const token =  localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization',  `Bearer ${token}`);
+    return this.http.get<any[]>(this.apiUrl+'/booksStatusData', {headers});
   }
-
-
-  // downloadUserBooks() {
-  //   return this.http.get<any[]>(this.apiUrl+'/download');
-  // }
 }

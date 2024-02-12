@@ -27,12 +27,10 @@ export class BookListComponent implements OnInit {
   constructor(private bookService: BookService) { }
 
   ngOnInit() {
-    console.log('book list init')
    this.getBookList();
    this.bookService.tabChangeSubject.subscribe(tabValue =>{
 
     if(tabValue == 'refreshBookList'){
-      console.log('refreshhhhhhhhoiiiiinnnnngggg')
       this.getBookList();
     }
 
@@ -68,7 +66,6 @@ export class BookListComponent implements OnInit {
   }
 
   refreshBookList(e: any) {
-    console.log('refreshBookList')
     this.getBookList();
     this.bookService.tabChangeSubject.next('refreshReadingList')
     }

@@ -1,27 +1,41 @@
-<mat-card>
-  <mat-card-title>Login</mat-card-title>
-<mat-card-content>
-<form [formGroup]="form" (ngSubmit)="login()">
-<p>
-  <mat-form-field>
-    <input matInput type="text" matInput placeholder="Username" formControlName="username">
-  </mat-form-field>
-</p>
-
-<p>
-  <mat-form-field>
-    <input matInput type="password" matInput placeholder="Password" formControlName="password">
-  </mat-form-field>
-</p>
-
-<p *ngIf="error" class="error">
-  {{ error }}
-</p>
-
-<div class="button">
-  <button type="submit" mat-button>Login</button>
+<!-- login.component.html -->
+<div *ngIf = "selectedTab=='login'">
+  <form (ngSubmit)="login()">
+    <div>
+      <label for="username">Username:</label>
+      <input type="text" id="email" name="email" [(ngModel)]="email" required>
+    </div>
+    <div>
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" [(ngModel)]="password" required>
+    </div>
+    <button type="submit">Login</button>
+    create an account
+    <button (click)="setTabSelection('register')">Register</button>
+  </form>
+</div>
+<div *ngIf = "selectedTab=='register'">
+  <form (ngSubmit)="register()" #registrationForm="ngForm">
+    <div>
+      <label for="name">Username</label>
+      <input type="text" id="name" name="name" [(ngModel)]="user.name" required>
+    </div>
+    <div>
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" [(ngModel)]="user.email" required>
+    </div>
+    <div>
+      <label for="phone">Phone</label>
+      <input type="phone" id="phone" name="phone" [(ngModel)]="user.phone" required>
+    </div>
+    <div>
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" [(ngModel)]="user.password" required>
+    </div>
+    <button type="submit" [disabled]="registrationForm.invalid">Register</button>
+    <button (click)="setTabSelection('login')">Login</button>
+  </form>
 </div>
 
-</form>
-</mat-card-content>
-</mat-card>
+
+

@@ -1,0 +1,19 @@
+/* login.component.css */
+form {
+  width: 300px;
+  margin: 0 auto;
+}
+
+div {
+  margin-bottom: 10px;
+}
+
+label {
+  display: block;
+}
+
+input {
+  width: 100%;
+  padding: 5px;
+  margin-top: 5px;
+}

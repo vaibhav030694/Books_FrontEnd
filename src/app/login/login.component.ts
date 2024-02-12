@@ -1,54 +1,64 @@
-import { Input, Component, Output, EventEmitter } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component } from '@angular/core';
 import { AuthService } from '../../service/auth.service';
+import { Router } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+import {MatSnackBar} from '@angular/material/snack-bar';
 import { CommonModule } from '@angular/common';
-import { FormGroup, FormControl, ReactiveFormsModule } from '@angular/forms';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatCardModule} from '@angular/material/card';
-import { MatInputModule } from '@angular/material/input';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [CommonModule, MatFormFieldModule, MatCardModule, ReactiveFormsModule, MatInputModule],
+  imports: [FormsModule, CommonModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
+
+  selectedTab: string = 'login'
   email: string = '';
   password: string = '';
-  error: string = '';
-  form: FormGroup =  new FormGroup({
-    username: new FormControl(''),
-    password: new FormControl(''),
-  });;
+  user = {
+    name: '',
+    email: '',
+    phone: '',
+    password: ''
+  };
 
-  // @Input() error: string | null;
-
-@Output() submitEM = new EventEmitter();
-
-
-  constructor(private authService: AuthService, private router: Router) {
-    // this.form = new FormGroup({
-    //   username: new FormControl(''),
-    //   password: new FormControl(''),
-    // });
-  }
+  constructor(private authService: AuthService, private router: Router, private _snackBar: MatSnackBar) {  }
 
   login() {
-    this.authService.login(this.email, this.password)
-      .subscribe({
-        next: () => {this.router.navigate(['/app-book-list'])},
-        error: (error) => console.error('Login failed', error)
-    });
+      this.authService.login(this.email, this.password)
+        .subscribe({
+          next: (response) => {
+            this.openSnackBar('Login successful');
+            localStorage.setItem("token", response.token)
+            this.router.navigate(['/app-home'])},
+          error: (error) => this.openSnackBar('Login failed')
+      });
+    }
+
+    register() {
+      console.log(this.user)
+      this.authService.register(this.user)
+        .subscribe({
+          next: (response) => {
+            this.openSnackBar('Registration successful. Please login to continue');
+            this.setTabSelection('login')
+            // localStorage.setItem("token", response.token)
+            // this.router.navigate(['/app-login'])
+          },
+          error: (error) => this.openSnackBar('Registration failed')
+      });
+    }
+
+    openSnackBar(message: string) {
+      this._snackBar.open(message, '', {
+        duration: 1500
+      });
+    }
+
+
+    setTabSelection(tab: string) {
+      this.selectedTab = tab
+      }
   }
-}
-
-
-
-
-// onsubmit(): void {
-//   if (this.form.valid) {
-//     this.submitEM.emit(this.form.value);
-//   }
-// }

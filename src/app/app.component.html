@@ -1,14 +1,13 @@
 <main class="main">
   <mat-toolbar>
-
-        <span (click)="navigateToHome()" class="cursor-pointer">Welcome to your Reading List App</span>
-
+        <span (click)="navigateToHome()" class="cursor-pointer">Reading List</span>
         <span class="spacer"></span>
         <button mat-icon-button matTooltip="View statistics" class="statisticsbtn" (click)="navigateToStatistics()">
           <mat-icon>view_kanban</mat-icon>
         </button>
-
-
+        <button mat-icon-button matTooltip="Logout" class="logoutbtn" (click)="logout()">
+          <mat-icon>power_settings_new</mat-icon>
+        </button>
   </mat-toolbar>
 
   <router-outlet></router-outlet>

@@ -36,7 +36,6 @@ export class ReadingListComponent {
     this.getReadingList();
     this.bookService.tabChangeSubject.subscribe(tabValue =>{
       if(tabValue == 'refreshReadingList'){
-        console.log('refreshhhhhhhhoiiiiinnnnngggg refreshReadingList')
         this.getReadingList();
       }
 
@@ -71,17 +70,13 @@ export class ReadingListComponent {
 
         }
         this.readingListbooks = list;
-
       })
     }
-
-
    }
 
    refreshReadingList(e: any) {
     console.log('refreshReadingList')
      this.getReadingList();
-
      this.bookService.tabChangeSubject.next('refreshBookList')
     }
 }

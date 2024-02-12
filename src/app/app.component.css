@@ -12,6 +12,11 @@
   border: none;
 }
 
+.logoutbtn {
+  background: none;
+  border: none;
+}
+
 .cursor-pointer{
   cursor: pointer;
 }

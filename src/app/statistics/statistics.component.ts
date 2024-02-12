@@ -54,7 +54,7 @@ export class StatisticsComponent {
           { label: "Unread",  y: data.unreadCount  },
           { label: "In progress", y: data.inProgressCount  },
           { label: "Finished",  y: data.finishedCount  }
-        ]
+        ],
       }]
     };
   }

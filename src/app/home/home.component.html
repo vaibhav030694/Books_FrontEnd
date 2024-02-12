@@ -1,4 +1,15 @@
-<mat-tab-group (selectedTabChange)="onTabChanged($event)">
-  <mat-tab label="Book List"> <app-book-list></app-book-list> </mat-tab>
-  <mat-tab label="Reading List"> <app-reading-list></app-reading-list> </mat-tab>
-</mat-tab-group>
+<div>
+  <mat-tab-group (selectedTabChange)="onTabChanged($event)">
+    <mat-tab label="Book List">
+      <div class="bookList">
+        <app-book-list></app-book-list>
+      </div>
+    </mat-tab>
+    <mat-tab label="Reading List">
+      <div class="bookList">
+        <app-reading-list></app-reading-list>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+</div>
+

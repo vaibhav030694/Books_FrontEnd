@@ -7,18 +7,13 @@
     <p matLine>ISBN: {{ book.ISBN }}</p>
   </mat-card-content>
   <ng-container *ngIf="component == 'book-list'">
-  <mat-card-actions align="end">
-    <div matTooltip="You cannot delete that" >
-      <button mat-button
-      (click)="addToReadingList(book)" color="primary" [disabled]="book.isadded=='yes'"
-
-
-     >
-      Add to reading list</button>
-
-    </div>
-
-  </mat-card-actions>
+    <mat-card-actions align="end">
+      <div>
+        <button mat-button
+        (click)="addToReadingList(book)" color="primary" [disabled]="book.isadded=='yes'">
+        Add to reading list</button>
+      </div>
+    </mat-card-actions>
   </ng-container>
   <ng-container *ngIf="component == 'reading-list'">
     <mat-card-actions align="end">
@@ -31,8 +26,7 @@
           <mat-option value="finished" >Finished</mat-option>
         </mat-select>
       </mat-form-field>
-
     </mat-card-actions>
-    </ng-container>
+  </ng-container>
 </mat-card>
 

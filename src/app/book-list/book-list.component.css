@@ -1,13 +1,15 @@
 .filter-card{
-  margin: 10px;
+  /* margin: 10px;
   display: block;
   list-style-type: disc;
   margin-block-start: 1em;
   margin-block-end: 1em;
   margin-inline-start: 0px;
   margin-inline-end: 0px;
-  padding-inline-start: 48px;
-
+  padding-inline-start: 48px; */
+  display: flex;
+  justify-content: center;
+  padding-top: 15px;
 }
 
 .mat-mdc-form-field{

@@ -3,11 +3,12 @@
   box-shadow: slategray;
 }
 
-
 .select-status{
-max-height: 50px;
-width: 154px;
-}
+  /* max-height: 50px;
+width: 154px; */
+    max-height: none !important;
+    width: auto !important;
+  }
 
 .mat-mdc-option {
   min-height: 27px !important;

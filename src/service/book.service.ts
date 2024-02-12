@@ -9,17 +9,7 @@ export class BookService {
   private apiUrl = 'http://localhost:3000/api/books';
   tabChangeSubject :Subject<any> = new Subject();
 
-  constructor(private http: HttpClient) {
-
-
-   }
-
-   subsSub(){
-//     this.tabChangeSubject.subscribe(tabValue =>{
-//       console.log(tabValue);
-//  })
-
-   }
+  constructor(private http: HttpClient) {}
 
   getBooks() {
     return this.http.get<any[]>(this.apiUrl+'/getAllBooks');
@@ -41,4 +31,14 @@ export class BookService {
   deleteBook(isbn: string) {
     return this.http.delete<any>(`${this.apiUrl}`+'/removeBookFormUserList'+`/${isbn}`);
   }
+
+  getReadingBookListStats() {
+    // to do create api to fetch reding list books
+    return this.http.get<any[]>(this.apiUrl+'/booksStatusData');
+  }
+
+
+  // downloadUserBooks() {
+  //   return this.http.get<any[]>(this.apiUrl+'/download');
+  // }
 }

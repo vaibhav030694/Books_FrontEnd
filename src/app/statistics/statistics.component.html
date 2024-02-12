@@ -1,11 +1,31 @@
-<p>statistics works!</p>
-
-<div (click)="navigateToHome()" class="cursor">
-  <mat-icon>
+<div  class="cursor">
+  <!-- <mat-icon>
     <span class="material-symbols-outlined">
-      arrow_left_alt
+
       </span></mat-icon>
-      Go Back To Home Page
+
+
+      <button mat-icon-button  (click)="navigateToHome()">
+        <mat-icon>arrow_left_alt</mat-icon> Go Back To Home Page
+      </button> -->
+
+
+      <button mat-button
+      (click)="navigateToHome()" color="primary">
+      Go Back To Home Page</button>
+
 
 </div>
+<div class="chart-container">
+  <h1>Statistics </h1>
+  <ngx-charts-pie-chart
+  [view]="view"
+  [scheme]="'cool'"
+  [results]="data"
+  [labels]="true"
+  [legend]="true">
+</ngx-charts-pie-chart>
+</div>
+
+
 

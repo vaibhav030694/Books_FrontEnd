@@ -6,3 +6,26 @@
 .toolbar-icon{
   margin-right: 4px;
 }
+
+.statisticsbtn {
+  background: none;
+  border: none;
+}
+
+.cursor-pointer{
+  cursor: pointer;
+}
+
+/* .float-container {
+
+}
+
+.float-child-one {
+    width: 95%;
+    float: left;
+}
+
+.float-child-two {
+    width: 5%;
+    float: right;
+} */

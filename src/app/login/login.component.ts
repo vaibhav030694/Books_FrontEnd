@@ -34,6 +34,7 @@ export class LoginComponent {
           next: (response) => {
             this.openSnackBar('Login successful');
             sessionStorage.setItem("token", response.token)
+            sessionStorage.setItem("emailId", this.email)
             this.router.navigate(['/home'])},
           error: (error) => this.openSnackBar('Login failed')
       });

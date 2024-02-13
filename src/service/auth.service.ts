@@ -23,7 +23,5 @@ export class AuthService {
   }
 
   isAuthenticated(): boolean {
-    // sessionStorage.setItem
-    return !!sessionStorage.getItem('token');
-  }
-}
+      return !!sessionStorage.getItem('token');
+    }

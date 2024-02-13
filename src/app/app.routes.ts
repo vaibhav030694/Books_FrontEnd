@@ -12,6 +12,6 @@ export const routes: Routes = [
   { path: 'readingList', component: ReadingListComponent, canActivate: [UserGuard] },
   { path: 'home', component: HomeComponent, canActivate: [UserGuard] },
   { path: 'statistics', component: StatisticsComponent, canActivate: [UserGuard] },
-  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
   {path: '**', redirectTo: '/home'}
 ];

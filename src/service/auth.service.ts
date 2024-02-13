@@ -21,4 +21,8 @@ export class AuthService {
   register(user: any) {
     return this.http.post<any>(`${this.apiUrl}/register`, user, this.httpOptions);
   }
+
+  isAuthenticated(): boolean {
+    return !!localStorage.getItem('token');
+  }
 }

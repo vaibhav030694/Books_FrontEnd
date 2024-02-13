@@ -45,7 +45,7 @@ export class LoginComponent {
             this.openSnackBar('Registration successful. Please login to continue');
             this.setTabSelection('login')
             // localStorage.setItem("token", response.token)
-            // this.router.navigate(['/app-login'])
+            // this.router.navigate(['/login'])
           },
           error: (error) => this.openSnackBar('Registration failed')
       });

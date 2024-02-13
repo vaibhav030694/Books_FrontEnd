@@ -9,9 +9,14 @@
       <label for="password">Password:</label>
       <input type="password" id="password" name="password" [(ngModel)]="password" required>
     </div>
-    <button type="submit">Login</button>
-    create an account
-    <button (click)="setTabSelection('register')">Register</button>
+    <div>
+      <button  mat-raised-button  type="submit" color="primary">Login</button>
+    </div>
+    <div>
+      Dont have an account?
+      <button mat-raised-button color="primary" (click)="setTabSelection('register')">Create an Account</button>
+    </div>
+
   </form>
 </div>
 <div *ngIf = "selectedTab=='register'">
@@ -32,8 +37,9 @@
       <label for="password">Password</label>
       <input type="password" id="password" name="password" [(ngModel)]="user.password" required>
     </div>
-    <button type="submit" [disabled]="registrationForm.invalid">Register</button>
-    <button (click)="setTabSelection('login')">Login</button>
+    <button mat-raised-button color="primary" type="submit" [disabled]="registrationForm.invalid">Register</button>
+    <br><br>
+    <button mat-raised-button color="primary" (click)="setTabSelection('login')">Go back to Login</button>
   </form>
 </div>
 

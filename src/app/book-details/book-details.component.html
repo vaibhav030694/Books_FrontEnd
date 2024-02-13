@@ -8,9 +8,9 @@
   </mat-card-content>
   <ng-container *ngIf="component == 'book-list'">
     <mat-card-actions align="end">
-      <div>
+      <div matTooltip="Book already added to reading list" [matTooltipDisabled] = "book.isadded!='yes'">
         <button mat-button
-        (click)="addToReadingList(book)" color="primary" [disabled]="book.isadded=='yes'">
+        (click)="addToReadingList(book)"  color="primary" [disabled]="book.isadded=='yes'">
         Add to reading list</button>
       </div>
     </mat-card-actions>

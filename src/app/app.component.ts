@@ -8,7 +8,8 @@ import { AuthService } from '../service/auth.service';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { MatIcon } from '@angular/material/icon';
 import {MatSnackBar} from '@angular/material/snack-bar';
-import { CommonModule } from '@angular/common';
+import { CommonModule, PlatformLocation } from '@angular/common';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-root',
@@ -18,7 +19,8 @@ import { CommonModule } from '@angular/common';
     BookListComponent,
     MatToolbarModule,
   MatIcon,
-CommonModule],
+CommonModule,
+MatTooltipModule],
   providers: [BookService,AuthService],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
@@ -30,12 +32,13 @@ export class AppComponent {
   currentPage : string = '';
   constructor(private router: Router,
     private bookService: BookService,
-    private _snackBar: MatSnackBar){}
+    private _snackBar: MatSnackBar,
+    private pl: PlatformLocation){}
 
 
   isLoginPage(): boolean{
-    this.currentPage =  window.location.href
-    return this.currentPage.indexOf('login')>-1
+
+    return this.pl.pathname.indexOf('login')>-1
   }
 
 
@@ -44,7 +47,7 @@ navigateToStatistics() {
 }
 
 logout() {
-  localStorage.removeItem("token");
+  sessionStorage.removeItem("token");
   this.router.navigate(['/login']);
   this._snackBar.open('Logout Succesful!','', {
     duration: 1500
@@ -52,6 +55,6 @@ logout() {
 }
 
 navigateToHome() {
-  this.router.navigate(['/app-home']);
+  this.router.navigate(['/home']);
   }
 }

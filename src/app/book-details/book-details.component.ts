@@ -12,7 +12,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 @Component({
   selector: 'app-book-details',
   standalone: true,
-  imports: [ MatIconModule, MatCardModule, CommonModule, MatSelectModule,MatButtonModule],
+  imports: [ MatIconModule, MatCardModule, CommonModule, MatSelectModule,MatButtonModule,MatTooltipModule],
   templateUrl: './book-details.component.html',
   styleUrl: './book-details.component.css'
 })

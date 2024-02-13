@@ -23,6 +23,7 @@ export class AuthService {
   }
 
   isAuthenticated(): boolean {
-    return !!localStorage.getItem('token');
+    // sessionStorage.setItem
+    return !!sessionStorage.getItem('token');
   }
 }

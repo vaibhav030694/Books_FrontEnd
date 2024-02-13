@@ -4,11 +4,13 @@ import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import { CommonModule } from '@angular/common';
-
+import { MatButtonModule } from '@angular/material/button';
+import {MatTooltipModule} from '@angular/material/tooltip';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [FormsModule, CommonModule],
+  imports: [FormsModule, CommonModule, MatButtonModule, MatTooltipModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
@@ -31,8 +33,8 @@ export class LoginComponent {
         .subscribe({
           next: (response) => {
             this.openSnackBar('Login successful');
-            localStorage.setItem("token", response.token)
-            this.router.navigate(['/app-home'])},
+            sessionStorage.setItem("token", response.token)
+            this.router.navigate(['/home'])},
           error: (error) => this.openSnackBar('Login failed')
       });
     }
@@ -44,7 +46,7 @@ export class LoginComponent {
           next: (response) => {
             this.openSnackBar('Registration successful. Please login to continue');
             this.setTabSelection('login')
-            // localStorage.setItem("token", response.token)
+            // sessionStorage.setItem("token", response.token)
             // this.router.navigate(['/login'])
           },
           error: (error) => this.openSnackBar('Registration failed')
@@ -53,7 +55,8 @@ export class LoginComponent {
 
     openSnackBar(message: string) {
       this._snackBar.open(message, '', {
-        duration: 1500
+        duration: 1500,
+        panelClass: ['green-snackbar']
       });
     }
 

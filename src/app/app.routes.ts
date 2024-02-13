@@ -8,9 +8,10 @@ import { Routes } from '@angular/router';
 
 export const routes: Routes = [
   { path: 'login', component: LoginComponent },
-  { path: 'app-book-list', component: BookListComponent, canActivate: [UserGuard] },
-  { path: 'app-reading-list', component: ReadingListComponent, canActivate: [UserGuard] },
-  { path: 'app-home', component: HomeComponent, canActivate: [UserGuard] },
+  { path: 'bookList', component: BookListComponent, canActivate: [UserGuard] },
+  { path: 'readingList', component: ReadingListComponent, canActivate: [UserGuard] },
+  { path: 'home', component: HomeComponent, canActivate: [UserGuard] },
   { path: 'statistics', component: StatisticsComponent, canActivate: [UserGuard] },
-  { path: '', redirectTo: '/login', pathMatch: 'full' }
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  {path: '**', redirectTo: '/home'}
 ];

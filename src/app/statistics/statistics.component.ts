@@ -20,7 +20,7 @@ export class StatisticsComponent {
   constructor(private router: Router, private bookService: BookService){ }
 
   navigateToHome() {
-    this.router.navigate(['/app-home']);
+    this.router.navigate(['/home']);
   }
 
   ngOnInit(): void {

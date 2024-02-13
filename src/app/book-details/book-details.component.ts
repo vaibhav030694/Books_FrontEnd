@@ -25,7 +25,6 @@ message: any;
   @Input()
   book!: Book;
   @Input() component: string = '';
-  // @Input() filterStatus!: string;
   status: string = 'unread';
   @Output() refreshReadingList: EventEmitter<any> = new EventEmitter();
   @Output() refreshBookList: EventEmitter<any> = new EventEmitter();
@@ -33,9 +32,6 @@ message: any;
 
   constructor(private bookService: BookService,
     private _snackBar: MatSnackBar) {
-      // this.bookService.filterSubject.subscribe(v   => {
-      //   this.filterBookList(v)
-      // });
     }
 
 
@@ -62,8 +58,6 @@ message: any;
                 // book is removed to reading list
                 this.openSnackBar('book is removed to reading list')
                 this.refreshReadingList.emit()
-                // update reading list
-                //api call
               },
               error: (e) =>{
               console.error('Error adding book to reading list books', e)
@@ -78,8 +72,6 @@ message: any;
         next: (response: any)=>{
           // book is addded to reading list
           this.openSnackBar('book is addded to reading list')
-          // this.bookService.tabChangeSubject.next()
-          // this.refreshReadingList.emit();
           this.refreshBookList.emit();
         },
         error: (e) =>{

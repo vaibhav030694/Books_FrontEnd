@@ -6,7 +6,6 @@ import {MatCardModule} from '@angular/material/card';
 import {MatInputModule} from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
 import { Book } from '../../models/book';
-import {MatTooltipModule} from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-book-list',

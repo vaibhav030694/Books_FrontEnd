@@ -37,7 +37,6 @@ export class StatisticsComponent {
         { name: 'InProgress', value: data.inProgressCount },
         { name: 'Finished', value: data.finishedCount }
       ];
-      console.log('api success stats')
       this.generateChart(data)
 
     });

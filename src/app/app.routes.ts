@@ -3,8 +3,8 @@ import { ReadingListComponent } from './reading-list/reading-list.component';
 import { HomeComponent } from './home/home.component';
 import { StatisticsComponent } from './statistics/statistics.component';
 import { LoginComponent } from './login/login.component';
-import { UserGuard } from '../auth-guard/auth-guard.service';
 import { Routes } from '@angular/router';
+import { UserGuard } from '../auth/auth-guard.service';
 
 export const routes: Routes = [
   { path: 'login', component: LoginComponent },

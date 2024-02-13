@@ -6,7 +6,7 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import {MatTooltipModule} from '@angular/material/tooltip';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 @Component({
   selector: 'app-login',
   standalone: true,
@@ -41,14 +41,11 @@ export class LoginComponent {
     }
 
     register() {
-      console.log(this.user)
       this.authService.register(this.user)
         .subscribe({
           next: (response) => {
             this.openSnackBar('Registration successful. Please login to continue');
             this.setTabSelection('login')
-            // sessionStorage.setItem("token", response.token)
-            // this.router.navigate(['/login'])
           },
           error: (error) => this.openSnackBar('Registration failed')
       });

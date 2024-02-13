@@ -19,7 +19,6 @@
     <mat-card-actions align="end">
       <button mat-button color="warn" (click)="delete(book.ISBN)">Delete</button>
       <mat-form-field class="select-status">
-        <!-- <mat-label>Status</mat-label> -->
         <mat-select [(value)]="book.status" (selectionChange)="updateStatus(book.ISBN, $event.value)">
           <mat-option value="unread" >Unread</mat-option>
           <mat-option value="inProgress"  >In Progress</mat-option>

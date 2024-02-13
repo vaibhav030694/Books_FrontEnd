@@ -1,9 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
+import { Component } from '@angular/core';
+import {  Router, RouterOutlet } from '@angular/router';
 import { BookDetailsComponent } from './book-details/book-details.component';
 import { BookListComponent } from './book-list/book-list.component';
 import { BookService } from '../service/book.service';
-import { HttpClient } from '@angular/common/http';
 import { AuthService } from '../service/auth.service';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { MatIcon } from '@angular/material/icon';
@@ -31,7 +30,6 @@ export class AppComponent {
 
   currentPage : string = '';
   constructor(private router: Router,
-    private bookService: BookService,
     private _snackBar: MatSnackBar,
     private pl: PlatformLocation){}
 

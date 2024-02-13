@@ -4,10 +4,8 @@ import { MatListModule } from '@angular/material/list';
 import { BookDetailsComponent } from '../book-details/book-details.component';
 import { Book } from '../../models/book';
 import { BookService } from '../../service/book.service';
-import { BookStatus } from '../../models/book-status-enum';
 import { CommonModule } from '@angular/common';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
-import { Subject } from 'rxjs/internal/Subject';
 import {MatCardModule} from '@angular/material/card';
 
 @Component({
@@ -32,7 +30,6 @@ export class ReadingListComponent {
   constructor(private bookService: BookService) { }
 
   ngOnInit() {
-    console.log('reading list init')
     this.getReadingList();
     this.bookService.tabChangeSubject.subscribe(tabValue =>{
       if(tabValue == 'refreshReadingList'){
@@ -75,7 +72,6 @@ export class ReadingListComponent {
    }
 
    refreshReadingList(e: any) {
-    console.log('refreshReadingList')
      this.getReadingList();
      this.bookService.tabChangeSubject.next('refreshBookList')
     }

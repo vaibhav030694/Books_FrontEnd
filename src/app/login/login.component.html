@@ -2,8 +2,8 @@
 <div *ngIf = "selectedTab=='login'">
   <form (ngSubmit)="login()">
     <div>
-      <label for="username">Username:</label>
-      <input type="text" id="email" name="email" [(ngModel)]="email" required>
+      <label for="username">Your Email:</label>
+      <input type="email" id="email" name="email" [(ngModel)]="email" required>
     </div>
     <div>
       <label for="password">Password:</label>
@@ -22,7 +22,7 @@
 <div *ngIf = "selectedTab=='register'">
   <form (ngSubmit)="register()" #registrationForm="ngForm">
     <div>
-      <label for="name">Username</label>
+      <label for="name">Name</label>
       <input type="text" id="name" name="name" [(ngModel)]="user.name" required>
     </div>
     <div>
@@ -31,7 +31,7 @@
     </div>
     <div>
       <label for="phone">Phone</label>
-      <input type="phone" id="phone" name="phone" [(ngModel)]="user.phone" required>
+      <input type="number" id="phone" name="phone" [(ngModel)]="user.phone" required>
     </div>
     <div>
       <label for="password">Password</label>
